@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #171717;
+  --foreground: #ffffff;
+  --toggle-page-bar-height: 4.75rem;
+  --toggle-page-bar-offset: clamp(0.75rem, 5vh, 5rem);
+  --toggle-page-bar-safe-area: env(safe-area-inset-bottom, 0px);
+  --toggle-page-bar-reserved: calc(
+    var(--toggle-page-bar-height) + var(--toggle-page-bar-offset) +
+      var(--toggle-page-bar-safe-area)
+  );
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-shippori-mincho), "Times New Roman", serif;
+  overflow-x: hidden;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 1em;
+  margin-left: 0.05em;
+  background: currentColor;
+  vertical-align: -0.12em;
+  opacity: 0;
+}
+
+.terminal-link:hover .caret,
+.toggle-page-bar:hover .caret,
+.page-title:hover .caret {
+  opacity: 1;
+  animation: blink 1s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+    opacity: 0;
+  }
+
+  .terminal-link:hover .caret,
+  .toggle-page-bar:hover .caret,
+  .page-title:hover .caret {
+    opacity: 1;
+  }
+}
