@@ -32,7 +32,7 @@ export default function RootLayout({
     >
       <body className="w-full min-h-dvh">
         <div
-          className="mx-auto w-full max-w-7xl min-h-dvh"
+          className="mx-auto w-full min-h-dvh"
           style={{ paddingBottom: "var(--toggle-page-bar-reserved)" }}
         >
           {children}
