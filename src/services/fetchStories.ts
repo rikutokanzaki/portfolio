@@ -14,7 +14,7 @@ export const fetchStories = async (): Promise<StoryItemData[]> => {
   const fallbackDataList: StoryItemData[] = [
     {
       title: "TOWN Inc.",
-      period: "Sept. 2025 - May 2026",
+      period: "Sept. 2025 - Present",
       description: "Responsible for building AI-powered Voice RAG environments and verifying document consistency as a SaaS engineer.",
     },
   ];
