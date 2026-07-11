@@ -118,7 +118,7 @@ export const Terminal = ({ title, head = "rikuto@swe", delimiter = ":", cwd = "~
         rel={targetOption === "_blank" ? "noopener noreferrer" : undefined}
       >
         <div
-          className="terminal-link w-full border-2 border-white shadow-[17px_20px_40px_0px_rgba(0,0,0,0.65)] cursor-pointer"
+          className="terminal-link w-full min-w-70 border-2 border-white shadow-[17px_20px_40px_0px_rgba(0,0,0,0.65)] cursor-pointer"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
