@@ -13,11 +13,14 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 
 export const ContactInfo = ({ title, linkText, url, logo, logoAlt, bgColor, ...props }: Props) => {
   return (
-    <div {...props}>
-      <div className="flex items-end gap-2">
+    <div
+      {...props}
+      className="p-4 flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+    >
+      <div className="flex items-end gap-3">
         {logo ? (
           <div
-            className="p-1 rounded-sm"
+            className="rounded-xl border border-white/10 p-2"
             style={bgColor ? { backgroundColor: bgColor } : undefined}
           >
             <Image
@@ -30,11 +33,13 @@ export const ContactInfo = ({ title, linkText, url, logo, logoAlt, bgColor, ...p
             />
           </div>
         ) : null}
-        <h2 className="text-lg">{title}</h2>
+        <h2 className="text-lg tracking-[0.18em] text-white/90">{title}</h2>
       </div>
 
       <Link href={url} target="_blank" rel="noopener noreferrer">
-        <p className="text-md underline">{linkText}</p>
+        <p className="font-mono text-sm tracking-[0.12em] text-sky-200 underline decoration-sky-300/60 underline-offset-4">
+          {linkText}
+        </p>
       </Link>
     </div>
   );

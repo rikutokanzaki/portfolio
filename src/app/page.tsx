@@ -21,33 +21,23 @@ const displayContactTerminalParams = {
 
 export default function Home() {
   return (
-    <div
-      className="w-full"
-      style={{ height: "calc(100dvh - var(--toggle-page-bar-reserved))", overflow: "hidden" }}
-    >
-      <main className="pt-10 w-full h-full flex flex-col align-middle">
-        <UserCard />
+    <div className="w-full">
+      <main className="mx-auto min-h-[calc(100dvh-var(--toggle-page-bar-reserved))] w-full max-w-7xl flex flex-col gap-10 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+        <section>
+          <UserCard />
+        </section>
 
-        <div className="flex-1 w-full flex flex-col justify-center gap-8">
-          <div className="w-full flex items-center justify-around">
-            <div className="w-1/3 h-full border-4 border-dotted rounded-xl"></div>
-            <div className="flex justify-center px-4 translate-x-20 md:pr-35 md:px-0 md:justify-center">
-              <Terminal {...displayAboutTerminalParams} />
-            </div>
+        <section className="grid gap-6 lg:grid-cols-3">
+          <div>
+            <Terminal {...displayAboutTerminalParams} />
           </div>
-          <div className="w-full flex items-center justify-around">
-            <div className="flex justify-center px-4 -translate-x-20 md:pl-35 md:px-0 md:justify-center">
-              <Terminal {...displayWorksTerminalParams} />
-            </div>
-            <div className="w-1/3 h-full border-4 border-dotted rounded-xl"></div>
+          <div>
+            <Terminal {...displayWorksTerminalParams} />
           </div>
-          <div className="w-full flex items-center justify-around">
-            <div className="w-1/3 h-full border-4 border-dotted rounded-xl"></div>
-            <div className="flex justify-center px-4 translate-x-20 md:pr-35 md:px-0 md:justify-center">
-              <Terminal {...displayContactTerminalParams} />
-            </div>
+          <div>
+            <Terminal {...displayContactTerminalParams} />
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );

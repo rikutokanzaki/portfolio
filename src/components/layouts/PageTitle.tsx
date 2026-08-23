@@ -30,6 +30,16 @@ export const PageTitle = ({ initialTitle, resultTitle }: Props) => {
   }, [initialTitle, resultTitle]);
 
   return (
-    <h1 className="text-4xl">{titleText}</h1>
+    <div className="page-title mb-6 flex flex-col gap-3">
+      <div className="flex items-center gap-3">
+        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.35em] text-white/55">
+          portfolio
+        </span>
+        <div className="h-px flex-1 bg-linear-to-r from-white/30 via-white/10 to-transparent" />
+      </div>
+      <h1 className="text-4xl tracking-[0.12em] text-white sm:text-5xl md:text-6xl">
+        {titleText}
+      </h1>
+    </div>
   );
 }

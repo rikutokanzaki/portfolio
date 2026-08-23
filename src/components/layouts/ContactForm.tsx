@@ -5,7 +5,7 @@ import { Textarea } from "@/components/elements/Textarea";
 import { Button } from "@/components/elements/Button";
 import { useState } from "react";
 import { isValidEmail } from "@/utils/validateString";
-import { sendMessage } from "@/services/sendMessage";
+import { sendMessage } from "@/lib/sendMessage";
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -110,15 +110,22 @@ export const ContactForm = () => {
   };
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="p-8 w-full mx-auto bg-(--background) border-2 border-white rounded-md shadow-[0_5px_15px_rgba(0,0,0,0.35)] flex flex-col gap-8">
-      <div className="mx-auto w-1/3 min-w-60 text-center border-b-2 border-dashed">
-        <h2 className="mb-2 text-xl">Send me a message</h2>
+    <form noValidate onSubmit={handleSubmit} className="glass-panel mx-auto flex min-w-0 w-full flex-col gap-5 rounded-[1.75rem] p-5 sm:p-6">
+      <div className="mx-auto w-full max-w-xl text-center">
+        <p className="mb-2 font-mono text-xs uppercase tracking-[0.4em] text-emerald-300/70">
+          contact
+        </p>
+        <h2 className="text-2xl tracking-[0.12em] text-white sm:text-3xl">
+          Send me a message
+        </h2>
       </div>
 
-      <div className="flex flex-col gap-5">
-        <div className="w-4/5 flex flex-col">
-          <div className="w-full max-w-50">
-            <label htmlFor="name">Your name</label>
+      <div className="grid gap-4">
+        <div className="flex flex-col gap-2">
+          <div className="w-full max-w-xl">
+            <label htmlFor="name" className="mb-2 block font-mono text-sm tracking-[0.18em] text-white/72">
+              Your name
+            </label>
             <Input
               type="text"
               id="name"
@@ -128,13 +135,15 @@ export const ContactForm = () => {
             />
           </div>
           {nameError && (
-            <p className="w-full text-red-600">{nameError}</p>
+            <p className="w-full max-w-xl text-sm text-red-300">{nameError}</p>
           )}
         </div>
 
-        <div className="w-4/5 flex flex-col">
-          <div className="w-full max-w-50">
-            <label htmlFor="email">Your email address</label>
+        <div className="flex flex-col gap-2">
+          <div className="w-full max-w-xl">
+            <label htmlFor="email" className="mb-2 block font-mono text-sm tracking-[0.18em] text-white/72">
+              Your email address
+            </label>
             <Input
               type="email"
               id="email"
@@ -144,12 +153,14 @@ export const ContactForm = () => {
             />
           </div>
           {emailError && (
-            <p className="w-full text-red-600">{emailError}</p>
+            <p className="w-full max-w-xl text-sm text-red-300">{emailError}</p>
           )}
         </div>
 
-        <div>
-          <label htmlFor="message">Message</label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="message" className="mb-2 block font-mono text-sm tracking-[0.18em] text-white/72">
+            Message
+          </label>
           <Textarea
             name="message"
             id="message"
@@ -165,7 +176,7 @@ export const ContactForm = () => {
       </div>
 
       {submitStatus !== "" && (
-        <p className={submitStatus === "error" ? "text-red-600" : "text-[#22c55e]"}>{submitMessage}</p>
+        <p className={submitStatus === "error" ? "text-red-300" : "text-emerald-300"}>{submitMessage}</p>
       )}
     </form>
   );

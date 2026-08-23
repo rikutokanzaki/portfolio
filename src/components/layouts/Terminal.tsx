@@ -7,7 +7,22 @@ import { delay } from "@/utils/delay";
 import { TerminalParams } from "@/types/terminal";
 import Link from "next/link";
 
-export const Terminal = ({ title, head = "rikuto@swe", delimiter = ":", cwd = "~", symbol = "$", commands, url, headColor = "#22c55e", delimiterColor, cwdColor = "#60a5fa", symbolColor, cursorColor, commandColor, targetOption }: TerminalParams) => {
+export const Terminal = ({
+  title,
+  head = "rikuto@swe",
+  delimiter = ":",
+  cwd = "~",
+  symbol = "$",
+  commands,
+  url,
+  headColor = "#22c55e",
+  delimiterColor,
+  cwdColor = "#60a5fa",
+  symbolColor,
+  cursorColor,
+  commandColor,
+  targetOption,
+}: TerminalParams) => {
   const router = useRouter();
   const [displayedCommand, setDisplayedCommand] = useState("");
   const [statusLines, setStatusLines] = useState<Array<string>>([]);
@@ -106,9 +121,14 @@ export const Terminal = ({ title, head = "rikuto@swe", delimiter = ":", cwd = "~
   };
 
   return (
-    <div className="w-full max-w-72">
-      <div className="text-xl text-center">
-        <p>{title}</p>
+    <div className="w-full max-w-[24rem]">
+      <div className="mb-3 flex items-center justify-between gap-3 px-1 text-sm text-white/70">
+        <p className="truncate font-mono tracking-[0.32em] uppercase">
+          {title}
+        </p>
+        <p className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[0.65rem] tracking-[0.28em] text-white/55">
+          click to run
+        </p>
       </div>
 
       <Link
@@ -116,27 +136,53 @@ export const Terminal = ({ title, head = "rikuto@swe", delimiter = ":", cwd = "~
         onClick={handleTerminalClick}
         target={targetOption}
         rel={targetOption === "_blank" ? "noopener noreferrer" : undefined}
+        aria-label={`${title} terminal`}
+        className="block"
       >
         <div
-          className="terminal-link w-full min-w-70 border-2 border-white shadow-[17px_20px_40px_0px_rgba(0,0,0,0.65)] cursor-pointer"
+          className="terminal-link glass-panel w-full min-h-52 flex flex-col overflow-hidden rounded-xl cursor-pointer"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="w-full h-3 bg-white"></div>
-          <div className="px-1.5 mt-1/12 w-full h-30 bg-(--background)" style={{ fontFamily: 'var(--font-cascadia-code), monospace' }}>
-            <div className="text-sm">
-              <span style={{ color: headColor }}>{head}</span>
-              <span style={{ color: delimiterColor }}>{delimiter}</span>
-              <span style={{ color: cwdColor }}>{cwd}</span>
-              <span style={{ color: symbolColor }}>{symbol} </span>
-              <span style={{ color: commandColor }}>{displayedCommand}</span>
-              <span aria-hidden="true" className="caret" style={{ backgroundColor: cursorColor }}></span>
+          <div className="flex shrink-0 items-center justify-between bg-gray-200 border-b border-white/10 px-4 py-3">
+            <div className="flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#f87171] shadow-[0_0_12px_rgba(248,113,113,0.5)]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#facc15] shadow-[0_0_12px_rgba(250,204,21,0.45)]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#22c55e] shadow-[0_0_12px_rgba(34,197,94,0.45)]" />
             </div>
-            {statusLines.map((statusLine, index) => (
-              <div key={`${statusLine}-${index}`} style={{ color: commandColor }}>
-                {statusLine}
+          </div>
+
+          <div
+            className="min-h-36 flex-1 space-y-3 bg-black px-3 py-2 font-mono text-[0.9rem] leading-6 sm:text-[0.95rem]"
+            style={{ fontFamily: "var(--font-roboto-mono)" }}
+          >
+            <div className="text-white/85">
+              <span style={{ color: headColor }}>{head}</span>
+              <span style={{ color: delimiterColor ?? "rgba(248, 250, 252, 0.75)" }}>
+                {delimiter}
+              </span>
+              <span style={{ color: cwdColor }}>{cwd}</span>
+              <span style={{ color: symbolColor ?? "rgba(248, 250, 252, 0.8)" }}>
+                {symbol}{" "}
+              </span>
+              <span style={{ color: commandColor ?? "rgba(248, 250, 252, 0.92)" }}>
+                {displayedCommand}
+              </span>
+              <span
+                aria-hidden="true"
+                className="caret"
+                style={{ backgroundColor: cursorColor ?? "#e2e8f0" }}
+              />
+
+              <div className="space-y-1 text-white/65">
+                {statusLines.map((statusLine, index) => (
+                  <div key={`${statusLine}-${index}`} style={{ color: commandColor ?? "#cbd5e1" }}>
+                    {statusLine}
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
           </div>
         </div>
       </Link>

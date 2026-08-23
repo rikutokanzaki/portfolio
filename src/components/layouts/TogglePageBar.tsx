@@ -18,8 +18,7 @@ export const TogglePageBar = () => {
     { href: "/contact", label: "Contact", command: "cd ~/contact" },
   ];
 
-  const textClassByPath =
-    pathName === "/" ? ["text-black", "text-white", "text-white", "text-white"] : pathName === "/about" ? ["text-white", "text-black", "text-white", "text-white"] : pathName === "/works" ? ["text-white", "text-white", "text-black", "text-white"] : ["text-white", "text-white", "text-white", "text-black"];
+  const textClassByPath = ["text-white", "text-white", "text-white", "text-white"];
 
   const backgroundPositionClass =
     pathName === "/" ? "translate-x-[0%]" : pathName === "/about" ? "translate-x-[100%]" : pathName === "/works" ? "translate-x-[200%]" : "translate-x-[300%]";
@@ -42,28 +41,31 @@ export const TogglePageBar = () => {
   };
 
   return (
-    <div className="toggle-page-bar px-3 py-2 w-full bg-(--background) border-2 border-white border-solid rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.35)] overflow-hidden">
-      <div className="mb-2 h-5 text-sm text-white whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontFamily: 'var(--font-cascadia-code), monospace' }}>
-        <span style={{ color: "#22c55e" }}>rikuto@swe</span>
-        <span style={{ color: "#ffffff" }}>:</span>
+    <div className="toggle-page-bar glass-panel min-h-24 overflow-hidden rounded-xl p-2">
+      <div
+        className="mb-3 h-5 truncate font-mono text-sm text-white/80"
+        style={{ fontFamily: "var(--font-roboto-mono)" }}
+      >
+        <span className="pl-2" style={{ color: "#22c55e" }}>rikuto@swe</span>
+        <span className="text-white/70">:</span>
         <span style={{ color: "#60a5fa" }}>{`~${pathName}`}</span>
-        <span style={{ color: "#ffffff" }}>$ </span>
+        <span className="text-white/70">$ </span>
         <span>{displayedCommand}</span>
-        <span aria-hidden="true" className="caret" style={{ backgroundColor: "#ffffff" }}></span>
+        <span aria-hidden="true" className="caret" style={{ backgroundColor: "#e2e8f0" }} />
       </div>
 
-      <div className="relative w-full grid grid-cols-4 items-center isolate">
-        <div className={`absolute top-1/2 left-0 w-1/4 h-7 bg-white rounded-lg pointer-events-none -translate-y-1/2 transition-transform duration-300 ease-out z-0 ${backgroundPositionClass}`} />
+      <div className="relative isolate grid w-full grid-cols-4 items-center gap-1 rounded-xl border border-white/10 bg-black/20 p-1">
+        <div className={`pointer-events-none absolute left-1 top-1/2 z-0 h-[calc(100%-0.5rem)] w-[calc(25%-0.25rem)] -translate-y-1/2 rounded-lg border border-white/25 bg-slate-700/90 shadow-[0_4px_14px_rgba(2,6,23,0.3)] transition-transform duration-300 ease-out ${backgroundPositionClass}`} />
 
         {pageLinks.map((pageLink, index) => (
           <Link
             key={pageLink.href}
             href={pageLink.href}
-            className="relative w-full z-10"
+            className="relative z-10 w-full"
             onMouseEnter={() => void startTypingPreview(pageLink.command)}
             onMouseLeave={clearTypingPreview}
           >
-            <Button className={`px-3 py-1 w-full text-center cursor-pointer ${textClassByPath[index]}`}>
+            <Button className={`w-full rounded-lg border-transparent bg-transparent! px-2 py-2 tracking-[0.12em] text-sm shadow-none transition-none hover:translate-y-0 hover:border-transparent hover:bg-white/10! ${textClassByPath[index]}`}>
               {pageLink.label}
             </Button>
           </Link>

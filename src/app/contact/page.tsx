@@ -2,21 +2,17 @@ import { PageTitle } from "@/components/layouts/PageTitle";
 import { MediaLinks } from "@/components/layouts/MediaLinks";
 import { ContactForm } from "@/components/layouts/ContactForm";
 
-const initialTitle = "＊＊＊＊＊";
+const initialTitle = "-----";
 const resultTitle = "Contact";
 
 export default function Contact() {
   return (
-    <div
-      className="w-full overflow-hidden"
-      style={{ height: "calc(100dvh - var(--toggle-page-bar-reserved))", overflow: "hidden" }}
-    >
-      <main className="pt-10 mx-auto w-4/5 h-full flex flex-col">
+    <div className="w-full min-h-full min-w-0 overflow-x-clip">
+      <main className="mx-auto flex min-h-[calc(100dvh-var(--toggle-page-bar-reserved))] w-full max-w-7xl min-w-0 flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <PageTitle initialTitle={initialTitle} resultTitle={resultTitle} />
 
-        <div className="w-full h-full flex flex-col justify-evenly">
+        <div className="flex h-full gap-6">
           <MediaLinks />
-
           <ContactForm />
         </div>
       </main>

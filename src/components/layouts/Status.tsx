@@ -1,18 +1,24 @@
+import { Fragment } from "react";
+
 type StatusProps = {
   statusList: string[];
 };
 
 export const Status = ({ statusList }: StatusProps) => {
   return (
-    <ul className="pb-0.5 mb-2 border-b-2 flex">
+    <ul className="mb-4 flex items-center justify-center gap-3 border-b border-white/10 pb-3">
       {statusList.map((value, index) => (
-        <li key={`${value}-${index}`} className="relative flex-1 px-2 text-center">
-          <p>{value}</p>
+        <Fragment key={`${value}-${index}`}>
+          <li className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-center text-sm tracking-[0.2em] text-white/80">
+            {value}
+          </li>
 
           {index < statusList.length - 1 ? (
-            <span className="absolute right-0 top-1/2 h-4 w-px -translate-y-1/2 translate-x-1/2 bg-current" />
+            <li aria-hidden="true" className="font-mono text-white/45">
+              |
+            </li>
           ) : null}
-        </li>
+        </Fragment>
       ))}
     </ul>
   );

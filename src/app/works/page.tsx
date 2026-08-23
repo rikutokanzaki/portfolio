@@ -1,10 +1,10 @@
 import { WorkItem } from "@/components/layouts/WorkItem";
 import { PageTitle } from "@/components/layouts/PageTitle";
-import { fetchWorks } from "@/services/fetchWorks";
+import { fetchWorks } from "@/lib/fetchWorks";
 import type { TerminalParams } from "@/types/terminal";
 import type { WorkItemData } from "@/types/work";
 
-const initialTitle = "＊＊＊＊＊";
+const initialTitle = "-----";
 const resultTitle = "Works";
 
 type WorkItemViewData = WorkItemData & {
@@ -25,20 +25,18 @@ export default async function Works() {
   }));
 
   return (
-    <div
-      className="w-full"
-      style={{ height: "calc(100dvh - var(--toggle-page-bar-reserved))", overflow: "hidden" }}
-    >
-      <main className="pt-10 mx-auto w-4/5 h-full flex flex-col">
+    <div className="w-full">
+      <main className="mx-auto flex min-h-[calc(100dvh-var(--toggle-page-bar-reserved))] w-full max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <PageTitle initialTitle={initialTitle} resultTitle={resultTitle} />
 
-        <div className="w-full h-full flex flex-col justify-evenly">
-          {workItemViews.map((value, index) => (
+        <div className="grid gap-6">
+          {workItemViews.map((value) => (
             <WorkItem
-              key={index}
+              key={value.title}
               title={value.title}
               itemIconPath={value.itemIconPath}
               description={value.description}
+              achievements={value.achievements}
               url={value.url}
               bgColor="#fff"
               terminalParams={value.terminalParams}
