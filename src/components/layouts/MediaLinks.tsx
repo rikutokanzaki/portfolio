@@ -5,12 +5,12 @@ export const MediaLinks = () => {
     <div className="glass-panel w-1/4 rounded-[1.75rem] p-4">
       <div className="flex items-center gap-3">
         <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(34,197,94,0.45)]" />
-        <h2 className="font-mono text-sm uppercase tracking-[0.28em] text-white/70">
+        <h2 className="font-mono text-sm tracking-[0.28em] text-white/70 uppercase">
           Social Links
         </h2>
       </div>
 
-      <div className="h-full flex flex-col justify-evenly">
+      <div className="flex h-full flex-col justify-evenly">
         <ContactInfo
           title="LinkedIn"
           linkText="rikutokanzaki"

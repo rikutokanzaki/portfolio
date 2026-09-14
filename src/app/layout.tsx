@@ -1,6 +1,6 @@
-import { TogglePageBar } from "@/components/layouts/TogglePageBar";
 import type { Metadata } from "next";
 import { Roboto_Mono, Shippori_Mincho } from "next/font/google";
+import { TogglePageBar } from "@/components/layouts/TogglePageBar";
 import "./globals.css";
 
 const shipporiMincho = Shippori_Mincho({
@@ -30,9 +30,9 @@ export default function RootLayout({
       lang="ja"
       className={`${shipporiMincho.variable} ${robotoMono.variable} h-full antialiased`}
     >
-      <body className="w-full min-h-dvh">
+      <body className="min-h-dvh w-full">
         <div
-          className="mx-auto w-full min-h-dvh"
+          className="mx-auto min-h-dvh w-full"
           style={{ paddingBottom: "var(--toggle-page-bar-reserved)" }}
         >
           {children}

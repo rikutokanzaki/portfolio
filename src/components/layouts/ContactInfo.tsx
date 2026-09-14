@@ -1,6 +1,6 @@
-import { HTMLAttributes } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { HTMLAttributes } from "react";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   title: string;
@@ -15,7 +15,7 @@ export const ContactInfo = ({ title, linkText, url, logo, logoAlt, bgColor, ...p
   return (
     <div
       {...props}
-      className="p-4 flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+      className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
     >
       <div className="flex items-end gap-3">
         {logo ? (

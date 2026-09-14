@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import { simulateTyping } from "@/utils/displayText";
-import { delay } from "@/utils/delay";
-import { TerminalParams } from "@/types/terminal";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { TerminalParams } from "@/types/terminal";
+import { delay } from "@/utils/delay";
+import { simulateTyping } from "@/utils/displayText";
 
 export const Terminal = ({
   title,
@@ -140,11 +140,11 @@ export const Terminal = ({
         className="block"
       >
         <div
-          className="terminal-link glass-panel w-full min-h-52 flex flex-col overflow-hidden rounded-xl cursor-pointer"
+          className="terminal-link glass-panel flex min-h-52 w-full cursor-pointer flex-col overflow-hidden rounded-xl"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="flex shrink-0 items-center justify-between bg-gray-200 border-b border-white/10 px-4 py-3">
+          <div className="flex shrink-0 items-center justify-between border-b border-white/10 bg-gray-200 px-4 py-3">
             <div className="flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-[#f87171] shadow-[0_0_12px_rgba(248,113,113,0.5)]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#facc15] shadow-[0_0_12px_rgba(250,204,21,0.45)]" />

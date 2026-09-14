@@ -22,7 +22,7 @@ export const WorkItem = ({ title, itemIconPath, iconAlt, description, url, bgCol
     <div className="w-full rounded-[1.75rem] border border-white/10 bg-white/5 p-5 shadow-[0_24px_80px_rgba(2,6,23,0.35)]">
       <div className="mb-5 flex items-center justify-between gap-4">
         <h2 className="text-2xl tracking-[0.18em] text-white">{title}</h2>
-        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-white/50">
+        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[0.65rem] tracking-[0.28em] text-white/50 uppercase">
           project
         </span>
       </div>
@@ -32,7 +32,7 @@ export const WorkItem = ({ title, itemIconPath, iconAlt, description, url, bgCol
           <Terminal {...terminalParams} />
         </div>
 
-        <div className="glass-panel flex min-w-0 min-h-full items-start rounded-3xl p-5">
+        <div className="glass-panel flex min-h-full min-w-0 items-start rounded-3xl p-5">
           <div className="flex w-full flex-col items-center gap-5 md:items-start">
             {itemIconPath ? (<Link href={url}>
               <div
@@ -52,7 +52,7 @@ export const WorkItem = ({ title, itemIconPath, iconAlt, description, url, bgCol
 
             {isResearch ? (
               <section className="w-full border-t border-white/10 pt-4">
-                <p className="font-mono text-xs uppercase tracking-[0.32em] text-emerald-300/70">
+                <p className="font-mono text-xs tracking-[0.32em] text-emerald-300/70 uppercase">
                   achievements
                 </p>
 
