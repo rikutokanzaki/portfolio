@@ -22,7 +22,7 @@ const displayContactTerminalParams = {
 export default function Home() {
   return (
     <div className="w-full">
-      <main className="mx-auto min-h-[calc(100dvh-var(--toggle-page-bar-reserved))] w-full max-w-7xl flex flex-col gap-10 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+      <main className="mx-auto flex min-h-[calc(100dvh-var(--toggle-page-bar-reserved))] w-full max-w-7xl flex-col gap-10 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <section>
           <UserCard />
         </section>

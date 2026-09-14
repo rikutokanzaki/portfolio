@@ -1,11 +1,11 @@
 'use client';
 
+import { useState } from "react";
+import { Button } from "@/components/elements/Button";
 import { Input } from "@/components/elements/Input";
 import { Textarea } from "@/components/elements/Textarea";
-import { Button } from "@/components/elements/Button";
-import { useState } from "react";
-import { isValidEmail } from "@/utils/validateString";
 import { sendMessage } from "@/lib/sendMessage";
+import { isValidEmail } from "@/utils/validateString";
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -110,9 +110,9 @@ export const ContactForm = () => {
   };
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="glass-panel mx-auto flex min-w-0 w-full flex-col gap-5 rounded-[1.75rem] p-5 sm:p-6">
+    <form noValidate onSubmit={handleSubmit} className="glass-panel mx-auto flex w-full min-w-0 flex-col gap-5 rounded-[1.75rem] p-5 sm:p-6">
       <div className="mx-auto w-full max-w-xl text-center">
-        <p className="mb-2 font-mono text-xs uppercase tracking-[0.4em] text-emerald-300/70">
+        <p className="mb-2 font-mono text-xs tracking-[0.4em] text-emerald-300/70 uppercase">
           contact
         </p>
         <h2 className="text-2xl tracking-[0.12em] text-white sm:text-3xl">

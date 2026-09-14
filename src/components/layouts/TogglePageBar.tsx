@@ -1,10 +1,10 @@
 'use client';
 
-import { Button } from "@/components/elements/Button";
-import { simulateTyping } from "@/utils/displayText";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
+import { Button } from "@/components/elements/Button";
+import { simulateTyping } from "@/utils/displayText";
 
 export const TogglePageBar = () => {
   const pathName = usePathname();
@@ -55,7 +55,7 @@ export const TogglePageBar = () => {
       </div>
 
       <div className="relative isolate grid w-full grid-cols-4 items-center gap-1 rounded-xl border border-white/10 bg-black/20 p-1">
-        <div className={`pointer-events-none absolute left-1 top-1/2 z-0 h-[calc(100%-0.5rem)] w-[calc(25%-0.25rem)] -translate-y-1/2 rounded-lg border border-white/25 bg-slate-700/90 shadow-[0_4px_14px_rgba(2,6,23,0.3)] transition-transform duration-300 ease-out ${backgroundPositionClass}`} />
+        <div className={`pointer-events-none absolute top-1/2 left-1 z-0 h-[calc(100%-0.5rem)] w-[calc(25%-0.25rem)] -translate-y-1/2 rounded-lg border border-white/25 bg-slate-700/90 shadow-[0_4px_14px_rgba(2,6,23,0.3)] transition-transform duration-300 ease-out ${backgroundPositionClass}`} />
 
         {pageLinks.map((pageLink, index) => (
           <Link
@@ -65,7 +65,7 @@ export const TogglePageBar = () => {
             onMouseEnter={() => void startTypingPreview(pageLink.command)}
             onMouseLeave={clearTypingPreview}
           >
-            <Button className={`w-full rounded-lg border-transparent bg-transparent! px-2 py-2 tracking-[0.12em] text-sm shadow-none transition-none hover:translate-y-0 hover:border-transparent hover:bg-white/10! ${textClassByPath[index]}`}>
+            <Button className={`w-full rounded-lg border-transparent bg-transparent! px-2 py-2 text-sm tracking-[0.12em] shadow-none transition-none hover:translate-y-0 hover:border-transparent hover:bg-white/10! ${textClassByPath[index]}`}>
               {pageLink.label}
             </Button>
           </Link>
